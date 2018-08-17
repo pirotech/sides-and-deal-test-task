@@ -1,0 +1,86 @@
+html,
+body,
+ul, li,
+h1, h2, h3, h4, h5 {
+  padding: 0;
+  margin: 0;
+}
+
+main {
+  display: inline-block;
+  font: 16px "Helvetica";
+  color: #8a8a8a;
+  padding: 20px;
+}
+main h3 {
+  font-weight: bold;
+  padding: 10px 0px;
+}
+main .deal {
+  border: 1px solid lightgray;
+  padding: 10px;
+  display: inline-flex;
+  flex-direction: column;
+}
+main .deal h4 {
+  font-weight: normal;
+}
+main .deal .partner-line .name,
+main .deal .partner-line .phone,
+main .deal .partner-line .add {
+  border: 1px solid lightgray;
+  line-height: 2em;
+}
+main .deal .partner-line .add {
+  border-color: black;
+  background: white;
+}
+main .deal .property-type {
+  border: 1px solid lightgray;
+  height: 2em;
+  align-self: flex-start;
+}
+main .deal #object-number-axes {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-top: 20px;
+}
+main .deal #object-number-axes span {
+  color: black;
+}
+main .deal .description-area {
+  display: flex;
+  flex-direction: row;
+  padding-top: 20px;
+}
+main .deal .description-area .living,
+main .deal .description-area .non-living,
+main .deal .description-area .lowered {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+main .deal .description-area .living .header,
+main .deal .description-area .non-living .header,
+main .deal .description-area .lowered .header {
+  background: #e4e4e4;
+}
+main .deal .description-area .living .row,
+main .deal .description-area .non-living .row,
+main .deal .description-area .lowered .row {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+main .buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding: 5px;
+}
+main .buttons :first-child {
+  margin-bottom: 5px;
+}
+
+/*# sourceMappingURL=main.css.map */

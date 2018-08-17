@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ru" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title>JQuery page</title>
+  <link rel="stylesheet" href="main.css">
+</head>
+<body>
+
+<main>
+  <h3>Стороны и объект договора:</h3>
+  <div class="deal">
+    <!-- partner -->
+    <h4>Участник договора</h4>
+    <div class="partner-line">
+      <input class="name" type="text">
+      <input class="phone" type="tel" placeholder="+7 999 666 9999">
+      <button class="add" type="button">+</button>
+    </div>
+
+    <!-- type property -->
+    <h4>Вид собственности</h4>
+    <select class="property-type">
+      <option value="value1">Value1</option>
+      <option value="value2">Value2</option>
+      <option value="value3">Value3</option>
+    </select>
+
+    <!-- object number axes -->
+    <div id="object-number-axes">
+      <h4>Объект: <span id="property-object"></span></h4>
+      <h4>Квартира: <span id="property-number"></span></h4>
+      <h4>Строительные оси: <span id="property-axes"></span></h4>
+    </div>
+
+    <!-- area -->
+    <h4>Площадь: <span id="property-area"></span></h4>
+    <div class="description-area">
+      <!-- living -->
+      <div class="living">
+        <!-- header -->
+        <div class="header">
+          <span>Жилая</span>
+        </div>
+        <!-- data -->
+        <div class="row">
+          <span>Комната1</span>
+          <span>.....</span>
+          <span id="room1" class="value"></span>
+        </div>
+        <div class="row">
+          <span>Комната2</span>
+          <span>.....</span>
+          <span id="room2" class="value"></span>
+        </div>
+        <div class="row">
+          <span>Комната3</span>
+          <span>.....</span>
+          <span id="room3" class="value"></span>
+        </div>
+      </div>
+      <!-- non living -->
+      <div class="non-living">
+        <!-- header -->
+        <div class="header">
+          <span>Нежилая</span>
+        </div>
+        <!-- data -->
+        <div class="row">
+          <span>Кухня</span>
+          <span>.....</span>
+          <span id="kitchen" class="value"></span>
+        </div>
+        <div class="row">
+          <span>Коридор</span>
+          <span>.....</span>
+          <span id="hall" class="value"></span>
+        </div>
+        <div class="row">
+          <span>Санузел</span>
+          <span>.....</span>
+          <span id="bathroom" class="value"></span>
+        </div>
+      </div>
+      <!-- lowered -->
+      <div class="lowered">
+        <div class="header">
+          <span>Площадь с пониж. кооф.</span>
+        </div>
+        <div class="row">
+          <span>Балкон</span>
+          <span>.....</span>
+          <span id="balcony" class="value"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="buttons">
+    <button id="send" type="button">Send</button>
+    <button id="load" type="button">Load</button>
+  </div>
+</main>
+
+<script data-main="main" src="bower_components/requirejs/require.js" charset="utf-8"></script>
+
+</body>
+</html>
