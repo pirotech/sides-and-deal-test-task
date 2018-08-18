@@ -19,9 +19,9 @@ define(['jquery'], function($) {
       this.axes = axes;
       this.areas = areas;
       this.choose = function() {
-        $('#property-object').text(this.object);
-        $('#property-number').text(this.number);
-        $('#property-axes').text(this.axes);
+        $('#apartment-object').text(this.object);
+        $('#apartment-number').text(this.number);
+        $('#apartment-axes').text(this.axes);
         $('#room1').text(this.areas.room1);
         $('#room2').text(this.areas.room2);
         $('#room3').text(this.areas.room3);
@@ -52,68 +52,76 @@ define(['jquery'], function($) {
 
     // init options
     for (var i = 0; i < apartments.length; ++i) {
-      $( '.apartments' ).append(apartments[i].createOption());
+      $( '#apartments' ).append(apartments[i].createOption());
     }
     apartments[0].choose();
 
-    var apartments_node = $( '.apartments' );
-    apartments_node.on('change', function(e) {
+    $( '#apartments' ).on('change', function(e) {
       apartments.find(function(e) {
         return e.object == $( this ).val();
       }).choose();
     });
 
     // hide-show description area
-    var area = $('#property-area');
-    area.parent().on('click', function(e) {
+    $( '#apartment-area' ).parent().on('click', function(e) {
       $( this ).next().toggle();
     });
 
     // sending
-    var send = $('#send');
-    var name = $('.partner-line .name');
-    var phone = $('.partner-line .phone');
-    send.on('click', function(e) {
+    var name = $( '.partner-line .name' );
+    var phone = $( '.partner-line .phone' );
+    $( '#send' ).on('click', function(e) {
       // validation
-      if (name.val() === '') {
-        name.addClass('error');
-      } else {
-        name.removeClass('error');
-      }
-      var phone_regex = /(\+7)|8\d{7}/;
-      if (phone.val() === '' || !phone_regex.test(phone.val())) {
-        phone.addClass('error');
-      } else {
-        phone.removeClass('error');
-      }
+      var isValid = true;
+      var partners_callback = function(e, i) {
+        var name = e.find( '.name' );
+        var phone = e.find( '.phone' );
 
-      // collecting data
-      var a = {
-        partners: [],
-        property_type: property_type,
-        property: data[property_type.val()]
+        var phone_regex = /(\+7)|8\d{7}/;
+        if (name.val() === '') {
+          isValid = false;
+          name.addClass('error');
+        } else {
+          name.removeClass('error');
+        }
+        var phone_clean = phone.val().trim().replace('/\s/', '');
+        if (phone_clean === '' || !phone_regex.test(phone_clean)) {
+          isValid = false;
+          phone.addClass('error');
+        } else {
+          phone.removeClass('error');
+        }
       };
-      $( '.partner-line' ).each(function(i, e) {
-        a.partners.push({
-          name: e.find('.name').val(),
-          phone: e.find('.phone').val()
+      $( '.partner-line' ).forEach(partners_callback);
+
+      if (isValid) {
+      // collecting data
+        var a = {
+          partners: [],
+          property_type: property_type,
+          property: data[property_type.val()]
+        };
+        $( '.partner-line' ).each(function(i, e) {
+          a.partners.push({
+            name: e.find( '.name' ).val(),
+            phone: e.find( '.phone' ).val()
+          });
         });
-      });
-      console.log(a);
+        console.log(a);
 
       // request
-      $.post('random/post/request/', a)
-      .done(function() {
-        alert('done');
-      })
-      .fail(function() {
-        alert('fail');
-      });
+        $.post('random/post/request/', a)
+        .done(function() {
+          alert('done');
+        })
+        .fail(function() {
+          alert('fail');
+        });
+      }
     });
 
     // loading
-    var load = $('#load');
-    load.on('click', function(e) {
+    $( '#load' ).on('click', function(e) {
       console.log(e.currentTarget);
     });
   });
