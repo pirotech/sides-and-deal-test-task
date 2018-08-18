@@ -30,10 +30,14 @@ main #deal .partner-line .phone,
 main #deal .partner-line .add {
   border: 1px solid lightgray;
   line-height: 2em;
+  padding: 0px 5px;
 }
 main #deal .partner-line .add {
   border-color: black;
   background: white;
+}
+main #deal .partner-line .error {
+  border-color: #cd2b2b;
 }
 main #deal #apartments {
   border: 1px solid lightgray;
