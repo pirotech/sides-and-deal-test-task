@@ -19,9 +19,9 @@ define(['jquery'], function($) {
       this.axes = axes;
       this.areas = areas;
       this.choose = function() {
-        $('#property-object').text(this.object);
-        $('#property-number').text(this.number);
-        $('#property-axes').text(this.axes);
+        $('#apartment-object').text(this.object);
+        $('#apartment-number').text(this.number);
+        $('#apartment-axes').text(this.axes);
         $('#room1').text(this.areas.room1);
         $('#room2').text(this.areas.room2);
         $('#room3').text(this.areas.room3);
@@ -52,28 +52,25 @@ define(['jquery'], function($) {
 
     // init options
     for (var i = 0; i < apartments.length; ++i) {
-      $( '.apartments' ).append(apartments[i].createOption());
+      $( '#apartments' ).append(apartments[i].createOption());
     }
     apartments[0].choose();
 
-    var apartments_node = $( '.apartments' );
-    apartments_node.on('change', function(e) {
+    $( '#apartments' ).on('change', function(e) {
       apartments.find(function(e) {
         return e.object == $( this ).val();
       }).choose();
     });
 
     // hide-show description area
-    var area = $('#property-area');
-    area.parent().on('click', function(e) {
+    $( '#apartment-area' ).parent().on('click', function(e) {
       $( this ).next().toggle();
     });
 
     // sending
-    var send = $('#send');
-    var name = $('.partner-line .name');
-    var phone = $('.partner-line .phone');
-    send.on('click', function(e) {
+    var name = $( '.partner-line .name' );
+    var phone = $( '.partner-line .phone' );
+    $( '#send' ).on('click', function(e) {
       // validation
       if (name.val() === '') {
         name.addClass('error');
@@ -95,8 +92,8 @@ define(['jquery'], function($) {
       };
       $( '.partner-line' ).each(function(i, e) {
         a.partners.push({
-          name: e.find('.name').val(),
-          phone: e.find('.phone').val()
+          name: e.find( '.name' ).val(),
+          phone: e.find( '.phone' ).val()
         });
       });
       console.log(a);
@@ -112,7 +109,7 @@ define(['jquery'], function($) {
     });
 
     // loading
-    var load = $('#load');
+    var load = $( '#load' );
     load.on('click', function(e) {
       console.log(e.currentTarget);
     });
