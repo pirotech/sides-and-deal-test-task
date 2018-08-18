@@ -72,45 +72,56 @@ define(['jquery'], function($) {
     var phone = $( '.partner-line .phone' );
     $( '#send' ).on('click', function(e) {
       // validation
-      if (name.val() === '') {
-        name.addClass('error');
-      } else {
-        name.removeClass('error');
-      }
-      var phone_regex = /(\+7)|8\d{7}/;
-      if (phone.val() === '' || !phone_regex.test(phone.val())) {
-        phone.addClass('error');
-      } else {
-        phone.removeClass('error');
-      }
+      var isValid = true;
+      var partners_callback = function(e, i) {
+        var name = e.find( '.name' );
+        var phone = e.find( '.phone' );
 
-      // collecting data
-      var a = {
-        partners: [],
-        property_type: property_type,
-        property: data[property_type.val()]
+        var phone_regex = /(\+7)|8\d{7}/;
+        if (name.val() === '') {
+          isValid = false;
+          name.addClass('error');
+        } else {
+          name.removeClass('error');
+        }
+        var phone_clean = phone.val().trim().replace('/\s/', '');
+        if (phone_clean === '' || !phone_regex.test(phone_clean)) {
+          isValid = false;
+          phone.addClass('error');
+        } else {
+          phone.removeClass('error');
+        }
       };
-      $( '.partner-line' ).each(function(i, e) {
-        a.partners.push({
-          name: e.find( '.name' ).val(),
-          phone: e.find( '.phone' ).val()
+      $( '.partner-line' ).forEach(partners_callback);
+
+      if (isValid) {
+      // collecting data
+        var a = {
+          partners: [],
+          property_type: property_type,
+          property: data[property_type.val()]
+        };
+        $( '.partner-line' ).each(function(i, e) {
+          a.partners.push({
+            name: e.find( '.name' ).val(),
+            phone: e.find( '.phone' ).val()
+          });
         });
-      });
-      console.log(a);
+        console.log(a);
 
       // request
-      $.post('random/post/request/', a)
-      .done(function() {
-        alert('done');
-      })
-      .fail(function() {
-        alert('fail');
-      });
+        $.post('random/post/request/', a)
+        .done(function() {
+          alert('done');
+        })
+        .fail(function() {
+          alert('fail');
+        });
+      }
     });
 
     // loading
-    var load = $( '#load' );
-    load.on('click', function(e) {
+    $( '#load' ).on('click', function(e) {
       console.log(e.currentTarget);
     });
   });
