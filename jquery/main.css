@@ -35,7 +35,7 @@ main .deal .partner-line .add {
   border-color: black;
   background: white;
 }
-main .deal .property-type {
+main .deal .apartments {
   border: 1px solid lightgray;
   height: 2em;
   align-self: flex-start;
