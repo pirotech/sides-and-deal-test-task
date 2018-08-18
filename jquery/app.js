@@ -1,12 +1,45 @@
 define(['jquery'], function($) {
   $( document ).ready(function() {
 
-    //data
-    var data = {
-      type1: {
-        object: 'O1',
-        number: 'N1',
-        axes: 'A1',
+    // partners
+    // adding partner
+    var add_partner = function(e) {
+      var line = $( this ).parent();
+      var cloned = line.clone();
+      cloned.find('.add').on('click', add_partner);
+      line.after(cloned);
+    };
+    $('.partner-line .add').on('click', add_partner);
+
+    // apartments
+    var Apartment = function(optionName, object, number, axes, areas) {
+      this.optionName = optionName;
+      this.object = object;
+      this.number = number;
+      this.axes = axes;
+      this.areas = areas;
+      this.choose = function() {
+        $('#property-object').text(this.object);
+        $('#property-number').text(this.number);
+        $('#property-axes').text(this.axes);
+        $('#room1').text(this.areas.room1);
+        $('#room2').text(this.areas.room2);
+        $('#room3').text(this.areas.room3);
+        $('#kitchen').text(this.areas.kitchen);
+        $('#hall').text(this.areas.hall);
+        $('#bathroom').text(this.areas.bathroom);
+        $('#balcony').text(this.areas.balcony);
+      };
+      this.createOption = function() {
+        return $(
+          '<option name="' + apartments[i].object + '">'
+          + apartments[i].optionName
+          + '</option>'
+        );
+      }
+    }
+    var apartments = [
+      new Apartment('option1', 'O1', 'N1', 'A1', {
         room1: 20,
         room2: 20,
         room3: 0,
@@ -14,64 +47,21 @@ define(['jquery'], function($) {
         hall: 10,
         bathroom: 10,
         balcony: 5
-      },
-      type2: {
-        object: 'O2',
-        number: 'N2',
-        axes: 'A2',
-        room1: 30,
-        room2: 20,
-        room3: 15,
-        kitchen: 15,
-        hall: 10,
-        bathroom: 10,
-        balcony: 5
-      },
-      type3: {
-        object: 'O3',
-        number: 'N3',
-        axes: 'A3',
-        room1: 30,
-        room2: 20,
-        room3: 15,
-        kitchen: 15,
-        hall: 10,
-        bathroom: 10,
-        balcony: 5
-      }
-    };
+      })
+    ];
 
+    // init options
+    for (var i = 0; i < apartments.length; ++i) {
+      $( '.apartments' ).append(apartments[i].createOption());
+    }
+    apartments[0].choose();
 
-    // adding partner
-    var add_partner = $('.partner-line .add');
-    var add_partner_func = function(e) {
-      var line = $( this ).parent();
-      var cloned = line.clone();
-      cloned.find('.add').on('click', add_partner_func);
-      line.after(cloned);
-    };
-    add_partner.on('click', add_partner_func);
-
-    // changing property type
-    var property_type = $('.property-type');
-    var change_property_type = function(name) {
-      global data;
-      var property = data[name];
-      $('#property-object').text(property.object);
-      $('#property-number').text(property.number);
-      $('#property-axes').text(property.axes);
-      $('#room1').text(property.room1);
-      $('#room2').text(property.room2);
-      $('#room3').text(property.room3);
-      $('#kitchen').text(property.kitchen);
-      $('#hall').text(property.hall);
-      $('#bathroom').text(property.bathroom);
-      $('#balcony').text(property.balcony);
-    };
-    property_type.on('change', function(e) {
-      change_property_type($( this ).val());
+    var apartments_node = $( '.apartments' );
+    apartments_node.on('change', function(e) {
+      apartments.find(function(e) {
+        return e.object == $( this ).val();
+      }).choose();
     });
-    change_property_type(property_type.val());
 
     // hide-show description area
     var area = $('#property-area');
