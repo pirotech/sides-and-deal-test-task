@@ -24,6 +24,7 @@ main #deal {
 }
 main #deal h4 {
   font-weight: normal;
+  padding-top: 5px;
 }
 main #deal .partner-line .name,
 main #deal .partner-line .phone,
@@ -61,13 +62,14 @@ main #deal #description-area {
 main #deal #description-area .living,
 main #deal #description-area .non-living,
 main #deal #description-area .lowered {
-  flex-grow: 1;
   display: flex;
   flex-direction: column;
 }
 main #deal #description-area .living .header,
 main #deal #description-area .non-living .header,
 main #deal #description-area .lowered .header {
+  width: 12em;
+  margin-bottom: 0.3em;
   background: #e4e4e4;
 }
 main #deal #description-area .living .row,
@@ -75,7 +77,14 @@ main #deal #description-area .non-living .row,
 main #deal #description-area .lowered .row {
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
+  justify-content: space-between;
+  padding-right: 1em;
+}
+main #deal #description-area .living .row .ellipse,
+main #deal #description-area .non-living .row .ellipse,
+main #deal #description-area .lowered .row .ellipse {
+  padding: 0 0.5em;
+  letter-spacing: 0.3em;
 }
 main .buttons {
   display: flex;

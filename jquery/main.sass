@@ -29,6 +29,7 @@ main
     flex-direction: column
     h4
       font-weight: normal
+      padding-top: 5px
     .partner-line
       .name,
       .phone,
@@ -59,15 +60,20 @@ main
       .living,
       .non-living,
       .lowered
-        flex-grow: 1
         display: flex
         flex-direction: column
         .header
+          width: 12em
+          margin-bottom: 0.3em
           background: #e4e4e4
         .row
           display: flex
           flex-direction: row
-          justify-content: flex-start
+          justify-content: space-between
+          padding-right: 1em
+          .ellipse
+            padding: 0 0.5em
+            letter-spacing: 0.3em
   .buttons
     display: flex
     flex-direction: column
