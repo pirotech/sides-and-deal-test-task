@@ -1,9 +1,15 @@
+@charset "UTF-8";
 html,
 body,
 ul, li,
 h1, h2, h3, h4, h5 {
   padding: 0;
   margin: 0;
+}
+
+.ellipse {
+  padding: 0 5px;
+  letter-spacing: 0.3em;
 }
 
 main {
@@ -49,15 +55,21 @@ main #deal #object-number-axes {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding-top: 20px;
+  padding-top: 5px;
 }
 main #deal #object-number-axes span {
   color: black;
 }
+main #deal #apartment-area {
+  color: black;
+}
+main #deal #apartment-area::after {
+  content: "m2 ⏷";
+}
 main #deal #description-area {
   display: flex;
   flex-direction: row;
-  padding-top: 20px;
+  padding-top: 5px;
 }
 main #deal #description-area .living,
 main #deal #description-area .non-living,
@@ -78,13 +90,17 @@ main #deal #description-area .lowered .row {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding-right: 1em;
+  padding-right: 5px;
 }
-main #deal #description-area .living .row .ellipse,
-main #deal #description-area .non-living .row .ellipse,
-main #deal #description-area .lowered .row .ellipse {
-  padding: 0 0.5em;
-  letter-spacing: 0.3em;
+main #deal #description-area .living .row .value,
+main #deal #description-area .non-living .row .value,
+main #deal #description-area .lowered .row .value {
+  color: black;
+}
+main #deal #description-area .living .row .value::after,
+main #deal #description-area .non-living .row .value::after,
+main #deal #description-area .lowered .row .value::after {
+  content: "m2";
 }
 main .buttons {
   display: flex;
@@ -92,7 +108,7 @@ main .buttons {
   align-items: flex-end;
   padding: 5px;
 }
-main .buttons :first-child {
+main .buttons:first-child {
   margin-bottom: 5px;
 }
 

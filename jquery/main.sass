@@ -1,9 +1,10 @@
 // variables
 $font-family: "Helvetica"
 $font-size: 16px
-$color: #8a8a8a
+$labelColor: #8a8a8a
+$valueColor: black
 $border: 1px solid lightgray
-$space: 20px
+$space: 5px
 
 // reset
 html,
@@ -13,11 +14,16 @@ h1, h2, h3, h4, h5
   padding: 0
   margin: 0
 
+// utils
+.ellipse
+  padding: 0 5px
+  letter-spacing: 0.3em
+
 // main
 main
   display: inline-block
   font: $font-size $font-family
-  color: $color
+  color: $labelColor
   padding: 20px
   h3
     font-weight: bold
@@ -52,7 +58,11 @@ main
       justify-content: space-between
       padding-top: $space
       span
-        color: black
+        color: $valueColor
+    #apartment-area
+      color: $valueColor
+    #apartment-area::after
+      content: 'm2 ⏷'
     #description-area
       display: flex
       flex-direction: row
@@ -70,14 +80,15 @@ main
           display: flex
           flex-direction: row
           justify-content: space-between
-          padding-right: 1em
-          .ellipse
-            padding: 0 0.5em
-            letter-spacing: 0.3em
+          padding-right: 5px
+          .value
+            color: $valueColor
+          .value::after
+            content: 'm2'
   .buttons
     display: flex
     flex-direction: column
     align-items: flex-end
     padding: 5px
-    :first-child
-      margin-bottom: 5px
+  .buttons:first-child
+    margin-bottom: 5px
