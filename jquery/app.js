@@ -13,7 +13,18 @@ define(['jquery'], function($) {
       };
       this.phoneIsValid = function() {
         return this.phone != '' && phone_regexp.test(this.phone);
-      }
+      };
+    };
+    Partner.createDiv = function(name, phone, add_partner_callback) {
+      var div = $(
+        '<div class="partner-line">' +
+        '<input class="name" type="text" value="' + name + '">' +
+        '<input class="phone" type="tel" value="' + phone + '" placeholder="+7 999 666 9999">' +
+        '<button class="add" type="button">+</button>' +
+        '</div>'
+      );
+      div.find( '.add' ).on('click', add_partner_callback);
+      return div;
     };
     // adding partner
     var add_partner = function(e) {
@@ -142,7 +153,12 @@ define(['jquery'], function($) {
 
     // loading
     $( '#load' ).on('click', function(e) {
-      console.log(e.currentTarget);
+      var countPartners = Math.round(1 + Math.random() * 4);
+      $( '.partner-line' ).remove();
+      for (var i = 0; i < countPartners; ++i) {
+        var div = Partner.createDiv('John', '+7 999 666 77 44', add_partner);
+        $( '#partners' ).after(div);
+      }
     });
   });
 });
