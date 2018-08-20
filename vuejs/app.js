@@ -45,7 +45,12 @@ define(['Vue'], function(Vue) {
       show_description_area: true
     },
     methods: {
-      double_partner: function() {},
+      double_partner: function(from) {
+        this.partners.push({
+          name: from.name,
+          phone: from.phone
+        });
+      },
       change_apartment: function() {},
       toggle_description_area: function() {},
       send: function() {},

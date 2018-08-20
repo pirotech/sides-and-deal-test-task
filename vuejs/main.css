@@ -38,6 +38,7 @@ main #deal .partner-line .add {
   line-height: 2em;
   padding: 0px 5px;
   margin-right: 5px;
+  margin-bottom: 5px;
 }
 main #deal .partner-line .add {
   border-color: black;
@@ -56,6 +57,10 @@ main #deal #object-number-axes {
   flex-direction: row;
   justify-content: space-between;
   padding-top: 5px;
+}
+main #deal #object-number-axes h4 {
+  font-weight: normal;
+  padding-top: 10px;
 }
 main #deal #object-number-axes span {
   color: black;
