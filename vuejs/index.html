@@ -29,17 +29,19 @@
 
     <!-- object number axes -->
     <div id="object-number-axes">
-      <h4>Объект: {{ current_apartment.object }}</h4>
-      <h4>Квартира: {{ current_apartment.number }}</h4>
-      <h4>Строительные оси: {{current_apartment.axes }}</h4>
+      <h4>Объект: <span class="value">{{ current_apartment.object }}</span></h4>
+      <h4>Квартира: <span class="value">{{ current_apartment.number }}</span></h4>
+      <h4>Строительные оси: <span class="value">{{current_apartment.axes }}</span></h4>
     </div>
 
     <!-- area -->
-    <h4 id="summary_area" v-on:click="toggle_description_area">
+    <h4 class="arrow-down" v-on:click="toggle_description_area">
       <span>Площадь</span>
       <span class="ellipse">.......</span>
-      <span>{{ summary_current_apartment_area }}</span>
+      <span class="value m2">{{ summary_current_apartment_area }}</span>
     </h4>
+
+    <!-- description area -->
     <div id="description-area" v-if="show_description_area">
       <!-- living -->
       <div class="living">
@@ -51,14 +53,14 @@
             <span>Комната3</span>
           </div>
           <div class="ellipses">
-            <span>.......</span>
-            <span>.......</span>
-            <span>.......</span>
+            <span class="ellipse">.......</span>
+            <span class="ellipse">.......</span>
+            <span class="ellipse">.......</span>
           </div>
           <div class="values">
-            <!-- <span>{{ current_apartment.areas.room1 }}</span>
-            <span>{{ current_apartment.areas.room2 }}</span>
-            <span>{{ current_apartment.areas.room3 }}</span> -->
+            <!-- <span class="m2">{{ current_apartment.areas.room1 }}</span>
+            <span class="m2">{{ current_apartment.areas.room2 }}</span>
+            <span class="m2">{{ current_apartment.areas.room3 }}</span> -->
           </div>
         </div>
       </div>
@@ -72,14 +74,14 @@
             <span>Санузел</span>
           </div>
           <div class="ellipses">
-            <span>.......</span>
-            <span>.......</span>
-            <span>.......</span>
+            <span class="ellipse">.......</span>
+            <span class="ellipse">.......</span>
+            <span class="ellipse">.......</span>
           </div>
           <div class="values">
-            <!-- <span>{{ current_apartment.areas.kitchen }}</span>
-            <span>{{ current_apartment.areas.hall }}</span>
-            <span>{{ current_apartment.areas.bathroom }}</span> -->
+            <!-- <span class="m2">{{ current_apartment.areas.kitchen }}</span>
+            <span class="m2">{{ current_apartment.areas.hall }}</span>
+            <span class="m2">{{ current_apartment.areas.bathroom }}</span> -->
           </div>
         </div>
       </div>
@@ -91,10 +93,10 @@
             <span>Балкон</span>
           </div>
           <div class="ellipses">
-            <span>.......</span>
+            <span class="ellipse">.......</span>
           </div>
           <div class="values">
-            <!-- <span>{{ current_apartment.areas.balcony }}</span> -->
+            <!-- <span class="m2">{{ current_apartment.areas.balcony }}</span> -->
           </div>
         </div>
       </div>

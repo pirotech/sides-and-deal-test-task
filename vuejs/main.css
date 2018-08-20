@@ -7,6 +7,23 @@ h1, h2, h3, h4, h5 {
   margin: 0;
 }
 
+.value,
+.values {
+  color: black;
+}
+
+.m2::after {
+  content: " m2";
+}
+
+.arrow-down::after {
+  content: "▼";
+}
+
+.ellipse {
+  letter-spacing: 0.3em;
+}
+
 main {
   display: inline-block;
   font: 16px "Helvetica";
@@ -61,24 +78,16 @@ main #deal #object-number-axes {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding-top: 5px;
 }
 main #deal #object-number-axes h4 {
   font-weight: normal;
   padding-top: 10px;
-}
-main #deal #object-number-axes span {
-  color: black;
-}
-main #deal #apartment-area {
-  color: black;
-}
-main #deal #apartment-area::after {
-  content: "m2 ⏷";
+  margin-right: 10px;
 }
 main #deal #description-area {
   display: flex;
   flex-direction: row;
+  justify-content: flex-start;
   padding-top: 5px;
 }
 main #deal #description-area .living,
@@ -91,26 +100,38 @@ main #deal #description-area .living .header,
 main #deal #description-area .non-living .header,
 main #deal #description-area .lowered .header {
   width: 12em;
-  margin-bottom: 0.3em;
+  padding: 5px;
   background: #e4e4e4;
 }
-main #deal #description-area .living .row,
-main #deal #description-area .non-living .row,
-main #deal #description-area .lowered .row {
+main #deal #description-area .living .name-ellipse-value,
+main #deal #description-area .non-living .name-ellipse-value,
+main #deal #description-area .lowered .name-ellipse-value {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  padding-right: 5px;
 }
-main #deal #description-area .living .row .value,
-main #deal #description-area .non-living .row .value,
-main #deal #description-area .lowered .row .value {
-  color: black;
+main #deal #description-area .living .name-ellipse-value .names,
+main #deal #description-area .living .name-ellipse-value .ellipses,
+main #deal #description-area .living .name-ellipse-value .values,
+main #deal #description-area .non-living .name-ellipse-value .names,
+main #deal #description-area .non-living .name-ellipse-value .ellipses,
+main #deal #description-area .non-living .name-ellipse-value .values,
+main #deal #description-area .lowered .name-ellipse-value .names,
+main #deal #description-area .lowered .name-ellipse-value .ellipses,
+main #deal #description-area .lowered .name-ellipse-value .values {
+  display: flex;
+  flex-direction: column;
 }
-main #deal #description-area .living .row .value::after,
-main #deal #description-area .non-living .row .value::after,
-main #deal #description-area .lowered .row .value::after {
-  content: "m2";
+main #deal #description-area .living .name-ellipse-value .names span,
+main #deal #description-area .living .name-ellipse-value .ellipses span,
+main #deal #description-area .living .name-ellipse-value .values span,
+main #deal #description-area .non-living .name-ellipse-value .names span,
+main #deal #description-area .non-living .name-ellipse-value .ellipses span,
+main #deal #description-area .non-living .name-ellipse-value .values span,
+main #deal #description-area .lowered .name-ellipse-value .names span,
+main #deal #description-area .lowered .name-ellipse-value .ellipses span,
+main #deal #description-area .lowered .name-ellipse-value .values span {
+  padding: 5px;
+  padding-bottom: 0;
 }
 main .buttons {
   display: flex;

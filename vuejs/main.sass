@@ -1,11 +1,10 @@
 // variables
 $font-family: "Helvetica"
 $font-size: 16px
-$labelColor: #8a8a8a
-$valueColor: black
 $border: 1px solid lightgray
-$space: 5px
-$padding: 10px
+$lg-space: 20px
+$md-space: 10px
+$sm-space: 5px
 
 // reset
 html,
@@ -16,25 +15,34 @@ h1, h2, h3, h4, h5
   margin: 0
 
 // util
+.value,
+.values
+  color: black
+.m2::after
+  content: ' m2'
+.arrow-down::after
+  content: '▼'
+.ellipse
+  letter-spacing: 0.3em
 
 // main
 main
   display: inline-block
   font: $font-size $font-family
-  color: $labelColor
-  padding: $padding * 2
+  color: #8a8a8a
+  padding: $lg-space
   h3
     font-weight: bold
-    padding-bottom: $padding
+    padding-bottom: $md-space
   #deal
     display: inline-flex
     flex-direction: column
     justify-content: flex-start
     border: $border
-    padding: $padding
+    padding: $md-space
     h4
       font-weight: normal
-      padding-top: $padding
+      padding-top: $md-space
     h4:first-child
       padding-top: 0
     #partners-lines
@@ -62,20 +70,15 @@ main
       display: flex
       flex-direction: row
       justify-content: space-between
-      padding-top: $space
       h4
         font-weight: normal
-        padding-top: $padding
-      span
-        color: $valueColor
-    #apartment-area
-      color: $valueColor
-    #apartment-area::after
-      content: 'm2 ⏷'
+        padding-top: $md-space
+        margin-right: $md-space
     #description-area
       display: flex
       flex-direction: row
-      padding-top: $space
+      justify-content: flex-start
+      padding-top: $sm-space
       .living,
       .non-living,
       .lowered
@@ -83,17 +86,19 @@ main
         flex-direction: column
         .header
           width: 12em
-          margin-bottom: 0.3em
+          padding: $sm-space
           background: #e4e4e4
-        .row
+        .name-ellipse-value
           display: flex
           flex-direction: row
-          justify-content: space-between
-          padding-right: 5px
-          .value
-            color: $valueColor
-          .value::after
-            content: 'm2'
+          .names,
+          .ellipses,
+          .values
+            display: flex
+            flex-direction: column
+            span
+              padding: $sm-space
+              padding-bottom: 0
   .buttons
     display: flex
     flex-direction: column
