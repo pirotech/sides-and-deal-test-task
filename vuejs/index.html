@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ru" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title>Vue.js page</title>
+  <link rel="stylesheet" href="main.css">
+</head>
+<body>
+
+<main>
+  <h3>Стороны и объект договора:</h3>
+  <div id="deal">
+
+    <!-- partners -->
+    <h4>Участник договора</h4>
+    <div class="partner-line" v-for="partner in partners">
+      <input class="name" type="text" v-model="partner.name">
+      <input class="phone" type="tel" v-model="partner.phone" placeholder="+7 999 666 9999">
+      <button class="add" type="button" v-on:click="double_partner">+</button>
+    </div>
+
+    <!-- type appartment -->
+    <h4>Вид собственности</h4>
+    <select id="apartments" v-model="current_apartment_name">
+      <option v-for="apartment in apartments">{{ apartment.name }}</option>
+    </select>
+
+    <!-- object number axes -->
+    <div id="object-number-axes">
+      <h4>Объект: {{ current_apartment.object }}</h4>
+      <h4>Квартира: {{ current_apartment.number }}</h4>
+      <h4>Строительные оси: {{current_apartment.axes }}</h4>
+    </div>
+
+    <!-- area -->
+    <h4 id="summary_area" v-on:click="toggle_description_area">
+      <span>Площадь</span>
+      <span class="ellipse">.......</span>
+      <span>{{ summary_current_apartment_area }}</span>
+    </h4>
+    <div id="description-area" v-if="show_description_area">
+      <!-- living -->
+      <div class="living">
+        <div class="header">Жилая</div>
+        <div class="name-ellipse-value">
+          <div class="names">
+            <span>Комната1</span>
+            <span>Комната2</span>
+            <span>Комната3</span>
+          </div>
+          <div class="ellipses">
+            <span>.......</span>
+            <span>.......</span>
+            <span>.......</span>
+          </div>
+          <div class="values">
+            <!-- <span>{{ current_apartment.areas.room1 }}</span>
+            <span>{{ current_apartment.areas.room2 }}</span>
+            <span>{{ current_apartment.areas.room3 }}</span> -->
+          </div>
+        </div>
+      </div>
+      <!-- non living -->
+      <div class="non-living">
+        <div class="header">Нежилая</div>
+        <div class="name-ellipse-value">
+          <div class="names">
+            <span>Кухня</span>
+            <span>Коридор</span>
+            <span>Санузел</span>
+          </div>
+          <div class="ellipses">
+            <span>.......</span>
+            <span>.......</span>
+            <span>.......</span>
+          </div>
+          <div class="values">
+            <!-- <span>{{ current_apartment.areas.kitchen }}</span>
+            <span>{{ current_apartment.areas.hall }}</span>
+            <span>{{ current_apartment.areas.bathroom }}</span> -->
+          </div>
+        </div>
+      </div>
+      <!-- lowered -->
+      <div class="lowered">
+        <div class="header">Площадь с пониж. кооф.</div>
+        <div class="name-ellipse-value">
+          <div class="names">
+            <span>Балкон</span>
+          </div>
+          <div class="ellipses">
+            <span>.......</span>
+          </div>
+          <div class="values">
+            <!-- <span>{{ current_apartment.areas.balcony }}</span> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="buttons">
+    <button type="button" v-on:click="send">Send</button>
+    <button type="button" v-on:click="load">Load</button>
+  </div>
+</main>
+
+<script data-main="main" src="bower_components/requirejs/require.js" charset="utf-8"></script>
+
+</body>
+</html>

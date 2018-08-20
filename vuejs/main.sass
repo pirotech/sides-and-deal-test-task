@@ -1,0 +1,93 @@
+// variables
+$font-family: "Helvetica"
+$font-size: 16px
+$labelColor: #8a8a8a
+$valueColor: black
+$border: 1px solid lightgray
+$space: 5px
+$padding: 10px
+
+// reset
+html,
+body,
+ul, li,
+h1, h2, h3, h4, h5
+  padding: 0
+  margin: 0
+
+// main
+main
+  display: inline-block
+  font: $font-size $font-family
+  color: $labelColor
+  padding: $padding * 2
+  h3
+    font-weight: bold
+    padding-bottom: $padding
+  #deal
+    display: inline-flex
+    flex-direction: column
+    justify-content: flex-start
+    border: $border
+    padding: $padding
+    h4
+      font-weight: normal
+      padding-top: $padding
+    h4:first-child
+      padding-top: 0
+    .partner-line
+      .name,
+      .phone,
+      .add
+        border: $border
+        line-height: 2em
+        padding: 0px 5px
+      .add
+        border-color: black
+        background: white
+      .error
+        border-color: #cd2b2b
+    #apartments
+      border: $border
+      height: 2em
+      align-self: flex-start
+    #object-number-axes
+      display: flex
+      flex-direction: row
+      justify-content: space-between
+      padding-top: $space
+      span
+        color: $valueColor
+    #apartment-area
+      color: $valueColor
+    #apartment-area::after
+      content: 'm2 ⏷'
+    #description-area
+      display: flex
+      flex-direction: row
+      padding-top: $space
+      .living,
+      .non-living,
+      .lowered
+        display: flex
+        flex-direction: column
+        .header
+          width: 12em
+          margin-bottom: 0.3em
+          background: #e4e4e4
+        .row
+          display: flex
+          flex-direction: row
+          justify-content: space-between
+          padding-right: 5px
+          .value
+            color: $valueColor
+          .value::after
+            content: 'm2'
+  .buttons
+    display: flex
+    flex-direction: column
+    align-items: flex-end
+    padding: 5px
+  .buttons:first-child
+    margin-bottom: 5px

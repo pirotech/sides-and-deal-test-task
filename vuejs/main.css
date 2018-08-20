@@ -1,0 +1,114 @@
+@charset "UTF-8";
+html,
+body,
+ul, li,
+h1, h2, h3, h4, h5 {
+  padding: 0;
+  margin: 0;
+}
+
+main {
+  display: inline-block;
+  font: 16px "Helvetica";
+  color: #8a8a8a;
+  padding: 20px;
+}
+main h3 {
+  font-weight: bold;
+  padding-bottom: 10px;
+}
+main #deal {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  border: 1px solid lightgray;
+  padding: 10px;
+}
+main #deal h4 {
+  font-weight: normal;
+  padding-top: 10px;
+}
+main #deal h4:first-child {
+  padding-top: 0;
+}
+main #deal .partner-line .name,
+main #deal .partner-line .phone,
+main #deal .partner-line .add {
+  border: 1px solid lightgray;
+  line-height: 2em;
+  padding: 0px 5px;
+}
+main #deal .partner-line .add {
+  border-color: black;
+  background: white;
+}
+main #deal .partner-line .error {
+  border-color: #cd2b2b;
+}
+main #deal #apartments {
+  border: 1px solid lightgray;
+  height: 2em;
+  align-self: flex-start;
+}
+main #deal #object-number-axes {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-top: 5px;
+}
+main #deal #object-number-axes span {
+  color: black;
+}
+main #deal #apartment-area {
+  color: black;
+}
+main #deal #apartment-area::after {
+  content: "m2 ⏷";
+}
+main #deal #description-area {
+  display: flex;
+  flex-direction: row;
+  padding-top: 5px;
+}
+main #deal #description-area .living,
+main #deal #description-area .non-living,
+main #deal #description-area .lowered {
+  display: flex;
+  flex-direction: column;
+}
+main #deal #description-area .living .header,
+main #deal #description-area .non-living .header,
+main #deal #description-area .lowered .header {
+  width: 12em;
+  margin-bottom: 0.3em;
+  background: #e4e4e4;
+}
+main #deal #description-area .living .row,
+main #deal #description-area .non-living .row,
+main #deal #description-area .lowered .row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-right: 5px;
+}
+main #deal #description-area .living .row .value,
+main #deal #description-area .non-living .row .value,
+main #deal #description-area .lowered .row .value {
+  color: black;
+}
+main #deal #description-area .living .row .value::after,
+main #deal #description-area .non-living .row .value::after,
+main #deal #description-area .lowered .row .value::after {
+  content: "m2";
+}
+main .buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding: 5px;
+}
+main .buttons:first-child {
+  margin-bottom: 5px;
+}
+
+/*# sourceMappingURL=main.css.map */
