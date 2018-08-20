@@ -37,6 +37,7 @@ main #deal .partner-line .add {
   border: 1px solid lightgray;
   line-height: 2em;
   padding: 0px 5px;
+  margin-right: 5px;
 }
 main #deal .partner-line .add {
   border-color: black;
