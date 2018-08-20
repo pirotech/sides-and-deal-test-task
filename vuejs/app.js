@@ -1,6 +1,6 @@
-define(['Vue'], function(Vue) {
+define(['Vue', 'axios'], function(Vue, axios) {
   var app = new Vue({
-    el: '#deal',
+    el: '#main',
     data: {
       partners: [
         {
@@ -41,30 +41,79 @@ define(['Vue'], function(Vue) {
         }
       ],
       current_apartment_name: 'apartment1',
-      current_apartment: {},
       show_description_area: true
     },
     methods: {
+      partnerNameIsValid: function(name) {
+        return name != '';
+      },
+      partnerPhoneIsValid: function(phone) {
+        phone = phone.trim().replace(/\s/g, '');
+        var regexp = /^((\+7)|8)[1-9]{10}$/;
+        return phone != '' && regexp.test(phone);
+      },
       double_partner: function(from) {
         this.partners.push({
           name: from.name,
           phone: from.phone
         });
       },
-      change_apartment: function() {},
-      toggle_description_area: function() {},
-      send: function() {},
-      load: function() {},
+      toggle_description_area: function() {
+        this.show_description_area = !this.show_description_area;
+      },
+      send: function() {
+        // validation
+        var isValid = true;
+
+        var partners_count = this.partners.length;
+        for (var i = 0; i < partners_count; i++) {
+          isValid = isValid && this.partnerNameIsValid(this.partners[i].name)
+            && this.partnerPhoneIsValid(this.partners[i].phone);
+        }
+
+        if (isValid) {
+          // collecting data
+          var data = {
+            partners: this.partners,
+            apartments: this.apartments
+          };
+
+          // request
+          axios.post('/random/post/request', data).then(function(response) {
+            alert(response.data);
+          }).catch(function(error) {
+            alert(error);
+          });
+        }
+      },
+      load: function() {
+        var partners_count = Math.round(1 + Math.random() * 4);
+        var partners = [];
+        for (var i = 0; i < partners_count; i++) {
+          partners.push({
+            name: 'Alice',
+            phone: '+7 999 444 33 22'
+          });
+        }
+        this.partners = partners;
+      },
     },
     computed: {
+      current_apartment: function() {
+        for (var i = 0; i < this.apartments.length; i++) {
+          if (this.apartments[i].name == this.current_apartment_name) {
+            return this.apartments[i];
+          }
+        }
+        return {};
+      },
       summary_current_apartment_area: function() {
-        // var areas = this.current_apartment.areas;
-        // var summary = areas.room1 + areas.room2 + areas.room3
-        //   + areas.kitchen + areas.hall + areas.bathroom
-        //   + areas.balcony;
-        // return summary;
-        return 100;
-      }
+        var areas = this.current_apartment.areas;
+        var summary = areas.room1 + areas.room2 + areas.room3
+          + areas.kitchen + areas.hall + areas.bathroom
+          + areas.balcony;
+        return summary;
+      },
     }
   });
 });

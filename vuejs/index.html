@@ -7,7 +7,7 @@
 </head>
 <body>
 
-<main>
+<main id="main">
   <h3>Стороны и объект договора:</h3>
   <div id="deal">
 
@@ -15,13 +15,17 @@
     <h4>Участник договора</h4>
     <div id="partners-lines">
       <div class="partner-line" v-for="partner in partners">
-        <input class="name" type="text" v-model="partner.name"><!--
-        --><input class="phone" type="tel" v-model="partner.phone" placeholder="+7 999 666 9999"><!--
+        <input class="name" type="text"
+          v-model="partner.name"
+          v-bind:class="{error: !partnerNameIsValid(partner.name)}"><!--
+        --><input class="phone" type="tel"
+          v-model="partner.phone"
+          v-bind:class="{error: !partnerPhoneIsValid(partner.phone)}" placeholder="+7 999 666 9999"><!--
         --><button class="add" type="button" v-on:click="double_partner(partner)">+</button>
       </div>
     </div>
 
-    <!-- type appartment -->
+    <!-- type apartment -->
     <h4>Вид собственности</h4>
     <select id="apartments" v-model="current_apartment_name">
       <option v-for="apartment in apartments">{{ apartment.name }}</option>
@@ -58,9 +62,9 @@
             <span class="ellipse">.......</span>
           </div>
           <div class="values">
-            <!-- <span class="m2">{{ current_apartment.areas.room1 }}</span>
+            <span class="m2">{{ current_apartment.areas.room1 }}</span>
             <span class="m2">{{ current_apartment.areas.room2 }}</span>
-            <span class="m2">{{ current_apartment.areas.room3 }}</span> -->
+            <span class="m2">{{ current_apartment.areas.room3 }}</span>
           </div>
         </div>
       </div>
@@ -79,9 +83,9 @@
             <span class="ellipse">.......</span>
           </div>
           <div class="values">
-            <!-- <span class="m2">{{ current_apartment.areas.kitchen }}</span>
+            <span class="m2">{{ current_apartment.areas.kitchen }}</span>
             <span class="m2">{{ current_apartment.areas.hall }}</span>
-            <span class="m2">{{ current_apartment.areas.bathroom }}</span> -->
+            <span class="m2">{{ current_apartment.areas.bathroom }}</span>
           </div>
         </div>
       </div>
@@ -96,7 +100,7 @@
             <span class="ellipse">.......</span>
           </div>
           <div class="values">
-            <!-- <span class="m2">{{ current_apartment.areas.balcony }}</span> -->
+            <span class="m2">{{ current_apartment.areas.balcony }}</span>
           </div>
         </div>
       </div>
