@@ -31,21 +31,26 @@ main #deal h4 {
 main #deal h4:first-child {
   padding-top: 0;
 }
-main #deal .partner-line .name,
-main #deal .partner-line .phone,
-main #deal .partner-line .add {
+main #deal #partners-lines .partner-line {
+  margin-bottom: 5px;
+}
+main #deal #partners-lines .partner-line .name,
+main #deal #partners-lines .partner-line .phone,
+main #deal #partners-lines .partner-line .add {
   border: 1px solid lightgray;
   line-height: 2em;
   padding: 0px 5px;
   margin-right: 5px;
-  margin-bottom: 5px;
 }
-main #deal .partner-line .add {
+main #deal #partners-lines .partner-line .add {
   border-color: black;
   background: white;
 }
-main #deal .partner-line .error {
+main #deal #partners-lines .partner-line .error {
   border-color: #cd2b2b;
+}
+main #deal #partners-lines .partner-line:last-child {
+  margin-bottom: 0;
 }
 main #deal #apartments {
   border: 1px solid lightgray;

@@ -37,20 +37,23 @@ main
       padding-top: $padding
     h4:first-child
       padding-top: 0
-    .partner-line
-      .name,
-      .phone,
-      .add
-        border: $border
-        line-height: 2em
-        padding: 0px 5px
-        margin-right: 5px
+    #partners-lines
+      .partner-line
         margin-bottom: 5px
-      .add
-        border-color: black
-        background: white
-      .error
-        border-color: #cd2b2b
+        .name,
+        .phone,
+        .add
+          border: $border
+          line-height: 2em
+          padding: 0px 5px
+          margin-right: 5px
+        .add
+          border-color: black
+          background: white
+        .error
+          border-color: #cd2b2b
+      .partner-line:last-child
+        margin-bottom: 0
     #apartments
       border: $border
       height: 2em
