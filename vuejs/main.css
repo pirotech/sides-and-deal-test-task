@@ -137,9 +137,9 @@ main .buttons {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  padding: 5px;
+  padding: 10px;
 }
-main .buttons:first-child {
+main .buttons button {
   margin-bottom: 5px;
 }
 
